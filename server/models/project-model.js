@@ -12,7 +12,7 @@ const projectSchema = new mongoose.Schema(
         description: {
             type: String,
             required: true,
-            tirm: true
+            trim: true
         },
 
         // Image path used by the React Projects page.
@@ -46,7 +46,7 @@ const projectSchema = new mongoose.Schema(
         // Date the project was completed.
         completionDate: {
             type: Date,
-        required: true
+            required: true
         }
     },
     {

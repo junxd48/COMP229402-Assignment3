@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -11,13 +15,13 @@ body {
   background-color: #F4F7FA;
 }
 
-/* Navigation */
-
+/* Main navigation container */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 8%;
+  gap: 24px;
+  padding: 18px 5%;
   background-color: #26354A;
   color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -34,9 +38,14 @@ nav a.active {
   color: #2A9D8F;
 }
 
+/* Navigation links and authentication controls */
 nav > div:last-child {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 12px;
 }
 
 nav > div:first-child a {
@@ -394,7 +403,7 @@ footer p {
 
 /* Mobile layout */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   nav {
     flex-direction: column;
     gap: 15px;
@@ -500,5 +509,228 @@ footer p {
     grid-template-columns: 1fr;
     gap: 0;
     margin-bottom: 0;
+  }
+}
+
+/* Sign Out button containing the username */
+.nav-signout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  background: transparent;
+  border: 1px solid #E9C46A;
+  color: #FFFFFF;
+
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Username displayed above Sign Out */
+.nav-username {
+  color: #E9C46A;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Sign Out hover effect */
+.nav-signout:hover {
+  background: #2A9D8F;
+  border-color: #2A9D8F;
+}
+
+/* ==========================================
+   AUTHENTICATION PAGES
+   Sign In and Sign Up
+   ========================================== */
+
+/* Center the authentication form on the page. */
+.auth-page {
+  max-width: 440px;
+  margin: 60px auto;
+  padding: 32px;
+  background-color: #FFFFFF;
+  border: 1px solid #DDE4EB;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(38, 53, 74, 0.08);
+}
+
+/* Authentication page heading. */
+.auth-page h1 {
+  color: #26354A;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Stack the form fields vertically. */
+.auth-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Keep each label and input together. */
+.auth-page form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Form field labels. */
+.auth-page label {
+  color: #26354A;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Consistent input field appearance. */
+.auth-page input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  color: #26354A;
+  font: inherit;
+}
+
+/* Highlight the selected input. */
+.auth-page input:focus {
+  outline: 2px solid #2A9D8F;
+  outline-offset: 1px;
+}
+
+/* Authentication submit button. */
+.auth-page button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #3C5070;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Submit button hover state. */
+.auth-page button[type="submit"]:hover:not(:disabled) {
+  background-color: #2A9D8F;
+}
+
+/* Prevent repeated submissions while loading. */
+.auth-page button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Center the Sign In / Sign Up navigation text. */
+.auth-page > p {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Style links between authentication pages. */
+.auth-page a {
+  color: #2A9D8F;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-page a:hover {
+  text-decoration: underline;
+}
+
+/* Display authentication errors clearly. */
+.auth-page [role="alert"] {
+  color: #B42318;
+  font-size: 14px;
+}
+
+/* Display registration success messages. */
+.auth-page .success-message {
+  color: #167347;
+  font-size: 14px;
+}
+
+/* Adjust spacing on smaller screens. */
+@media (max-width: 520px) {
+  .auth-page {
+    margin: 24px 16px;
+    padding: 24px 20px;
+  }
+}
+
+
+/* ==========================================
+   ADMINISTRATOR DASHBOARD
+   ========================================== */
+
+.admin-page {
+  padding: 70px 8%;
+}
+
+/* Display management areas in three columns. */
+.admin-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Individual management cards. */
+.admin-card {
+  display: block;
+  padding: 30px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #26354A;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Management card heading. */
+.admin-card h2 {
+  margin: 0 0 15px;
+  font-size: 22px;
+}
+
+/* Management card description. */
+.admin-card p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Management link text. */
+.admin-card span {
+  color: #2A9D8F;
+  font-weight: 600;
+}
+
+/* Card hover effect. */
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive administrator dashboard. */
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 50px 6%;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr;
   }
 }
