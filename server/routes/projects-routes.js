@@ -10,6 +10,11 @@ import {
     updateProject
 } from '../controllers/projects-controllers.js';
 
+import {
+  handleUpload,
+  saveProjectImage
+} from "../middleware/upload-middleware.js";
+
 // Create an Express router for project-related endpoints.
 const router = express.Router();
 
@@ -19,6 +24,8 @@ router.get('/:id', getProjectById);
 
 // CREATE: Authentication required.
 router.post('/', authenticateToken, authorizeAdmin, createProject);
+
+router.post("/upload", authenticateToken, authorizeAdmin, handleUpload, saveProjectImage);
 
 // UPDATE: Authentication required.
 router.put('/:id', authenticateToken, authorizeAdmin, updateProject);

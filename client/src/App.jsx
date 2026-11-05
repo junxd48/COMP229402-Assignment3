@@ -25,6 +25,11 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 import AdminDashboard from "./pages/AdminDashboard";
 import SignOut from "./pages/SignOut";
+import AdminProjects from "./pages/AdminProjects";
+import AdminProjectForm from "./pages/AdminProjectForm";
+import AdminQualifications from "./pages/AdminQualifications";
+import AdminQualificationForm from "./pages/AdminQualificationForm";
+import AdminContacts from "./pages/AdminContacts";
 
 function App() {
   return (
@@ -52,6 +57,13 @@ function App() {
             {/* Routes requiring administrator privileges */}
             <Route element={<AdminRoute />}>
               <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/projects" element={<AdminProjects />} />
+              <Route path="/admin/projects/new" element={<AdminProjectForm />} />
+              <Route path="/admin/projects/:id/edit" element={<AdminProjectForm />} />
+              <Route path="/admin/qualifications" element={<AdminQualifications />} />
+              <Route path="/admin/qualifications/add" element={<AdminQualificationForm />} />
+              <Route path="/admin/qualifications/edit/:id" element={<AdminQualificationForm />}/>
+              <Route path="/admin/contacts" element={<AdminContacts />}/>
             </Route>
           </Routes>
         </main>

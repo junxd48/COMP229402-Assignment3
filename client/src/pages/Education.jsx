@@ -58,6 +58,26 @@ function Education() {
     return () => controller.abort();
   }, []);
 
+  // Group qualifications by their category.
+  const education = qualifications.filter(
+    (item) => item.category === "Education"
+  );
+
+  const certifications = qualifications.filter(
+    (item) => item.category === "Certification"
+  );
+
+  const training = qualifications.filter(
+    (item) => item.category === "Training"
+  );
+
+  // Define the display order of qualification categories.
+  const qualificationGroups = [
+    { title: "Education", items: education },
+    { title: "Certifications", items: certifications },
+    { title: "Training", items: training },
+  ];
+
   return (
     <section className="education-page">
       <div className="page-header">
@@ -83,26 +103,59 @@ function Education() {
         <p>No qualifications available.</p>
       )}
 
-      {/* Display qualifications retrieved from MongoDB. */}
+      {/* Display qualifications grouped by category. */}
       {!loading && !error && qualifications.length > 0 && (
-        <div className="education-list">
-          {qualifications.map((item) => (
-            <article className="education-item" key={item._id}>
-              <div className="education-year">
-                {item.year}
-              </div>
+        <div className="education-groups">
 
-              <div className="education-details">
-                <h2>{item.title}</h2>
+          {qualificationGroups.map((group) => (
 
-                <h3>{item.institution}</h3>
+            // Display a category only if it contains qualifications.
+            group.items.length > 0 && (
+              <section className="education-group" key={group.title}>
 
-                <p>{item.description}</p>
-              </div>
-            </article>
+                {/* Category heading. */}
+                <h2 className="education-group-title">
+                  {group.title}
+                </h2>
+
+                <div className="education-list">
+
+                  {group.items.map((item) => (
+                    <article className="education-item" key={item._id}>
+
+                      {/* Qualification year. */}
+                      <div className="education-year">
+                        {item.year}
+                      </div>
+
+                      {/* Qualification details. */}
+                      <div className="education-details">
+
+                        <h3>{item.title}</h3>
+
+                        <h4>{item.institution}</h4>
+
+                        {/* Show progress status when applicable. */}
+                        {item.inProgress && (
+                          <p className="education-status">
+                            In Progress
+                          </p>
+                        )}
+
+                        {/* Display description only when available. */}
+                        {item.description && (
+                          <p>{item.description}</p>
+                        )}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )
           ))}
         </div>
       )}
+
     </section>
   );
 }

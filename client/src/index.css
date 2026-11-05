@@ -734,3 +734,373 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================
+   ADMIN PROJECTS MANAGEMENT
+   ========================================== */
+
+.admin-projects-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header containing navigation and future actions. */
+.admin-projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Return link to the administrator dashboard. */
+.admin-back-link {
+  color: #2A9D8F;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.admin-back-link:hover {
+  text-decoration: underline;
+}
+
+/* Allow horizontal scrolling on smaller screens. */
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Main administrator data table. */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Table header. */
+.admin-table th {
+  background-color: #26354A;
+  color: #FFFFFF;
+  padding: 15px;
+  text-align: left;
+}
+
+/* Table cells. */
+.admin-table td {
+  padding: 15px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+/* Alternate row shading. */
+.admin-table tbody tr:nth-child(even) {
+  background-color: #F4F7FA;
+}
+
+/* Row hover effect. */
+.admin-table tbody tr:hover {
+  background-color: #EAF4F2;
+}
+
+/* Keep table readable on mobile devices. */
+@media (max-width: 768px) {
+  .admin-table {
+    min-width: 650px;
+  }
+}
+
+
+/* ==========================================
+   ADMIN PROJECT FORM
+   ========================================== */
+
+.admin-add-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #3C5070;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.admin-add-button:hover {
+  background-color: #2A9D8F;
+}
+
+.admin-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-form label {
+  font-weight: 600;
+  color: #26354A;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #CCD5DF;
+  border-radius: 5px;
+  font: inherit;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: 2px solid #2A9D8F;
+  outline-offset: 1px;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.admin-form-actions button {
+  padding: 12px 20px;
+  background-color: #3C5070;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.admin-form-actions button:hover:not(:disabled) {
+  background-color: #2A9D8F;
+}
+
+.admin-form-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 20px;
+  }
+
+  .admin-form-actions {
+    flex-direction: column;
+  }
+}
+
+/* Edit button in the administrator project table. */
+.admin-edit-button {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #3C5070;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.admin-edit-button:hover {
+  background-color: #2A9D8F;
+}
+
+
+/* ==========================================
+   ADMIN PROJECT DELETE
+   ========================================== */
+
+/* Arrange Edit and Delete controls side by side. */
+.admin-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Delete button styling. */
+.admin-delete-button {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #B42318;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.admin-delete-button:hover:not(:disabled) {
+  background-color: #912018;
+}
+
+.admin-delete-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Darkened background behind the confirmation dialog. */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Confirmation dialog. */
+.admin-modal {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.admin-modal h2 {
+  margin-top: 0;
+  color: #26354A;
+}
+
+.admin-modal p {
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .admin-modal {
+    padding: 20px;
+  }
+
+  .admin-row-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* Consistent spacing and alignment for table actions. */
+.admin-table .admin-row-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+/* Give both buttons matching dimensions. */
+.admin-table .admin-edit-button,
+.admin-table .admin-delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+  min-height: 36px;
+  padding: 8px 12px;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Container for the project image preview. */
+.admin-image-preview {
+  margin: 12px 0 20px;
+}
+
+/* Label displayed above the preview. */
+.admin-image-preview p {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Display the image without stretching or distortion. */
+.admin-image-preview img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  max-height: 220px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Align the checkbox and its label horizontally. */
+.admin-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+/* Override general form input styling for checkboxes. */
+.admin-form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: #2A9D8F;
+}
+
+/* Style navigation links as administrator action buttons. */
+.admin-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  background-color: #3C5070;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Change button background on hover. */
+.admin-action-btn:hover {
+  background-color: #2A9D8F;
+  color: #ffffff;
+}
+
+/* Show a visible focus indicator for keyboard navigation. */
+.admin-action-btn:focus-visible {
+  outline: 3px solid #E9C46A;
+  outline-offset: 2px;
+}
+
+/* Separate qualification categories vertically. */
+.education-group {
+  margin-bottom: 40px;
+}
+
+/* Style category headings. */
+.education-group-title {
+  font-size: 26px;
+  color: #26354A;
+  margin-bottom: 24px;
+}
+
+/* Highlight qualifications that are still in progress. */
+.education-status {
+  display: inline-block;
+  color: #2A9D8F;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 8px 0;
+}
