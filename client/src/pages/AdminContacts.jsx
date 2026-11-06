@@ -194,6 +194,12 @@ function AdminContacts() {
                     <td>{contact.message || "—"}</td>
                     <td>
                       <div className="admin-row-actions">
+                        {/* Navigate to the Edit Contact form. */}
+                        <Link to={`/admin/contacts/edit/${contact._id}`}
+                          className="admin-edit-button">
+                            Edit
+                        </Link>
+
                         {/* Open the Delete Contact confirmation dialog. */}
                         <button type="button" className="admin-delete-button"
                           onClick={() => setContactToDelete(contact)}

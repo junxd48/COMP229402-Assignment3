@@ -30,6 +30,7 @@ import AdminProjectForm from "./pages/AdminProjectForm";
 import AdminQualifications from "./pages/AdminQualifications";
 import AdminQualificationForm from "./pages/AdminQualificationForm";
 import AdminContacts from "./pages/AdminContacts";
+import AdminContactForm from "./pages/AdminContactForm";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
               <Route path="/admin/qualifications/add" element={<AdminQualificationForm />} />
               <Route path="/admin/qualifications/edit/:id" element={<AdminQualificationForm />}/>
               <Route path="/admin/contacts" element={<AdminContacts />}/>
+              <Route path="/admin/contacts/edit/:id" element={<AdminContactForm />}/>
             </Route>
           </Routes>
         </main>

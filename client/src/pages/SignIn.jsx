@@ -72,7 +72,11 @@ function SignIn() {
 
   return (
     <section className="auth-page">
-      <h1>Sign In</h1>
+      <div className="page-header">
+        <p className="section-label">ACCOUNT ACCESS</p>
+        <h1>Access / Register</h1>
+        <p>Sign in or create an account.</p>
+      </div>
 
       {successMessage && (
         <p role="status" className="success-message">

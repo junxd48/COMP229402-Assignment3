@@ -54,8 +54,8 @@ function Navbar() {
           </>
         ) : (
           <>
-            <NavLink to="/signin">Sign In</NavLink>
-            <NavLink to="/signup">Sign Up</NavLink>
+            {/* Combined authentication navigation link. */}
+            <NavLink to="/signin">Access / Register</NavLink>
           </>
         )}
       </div>
